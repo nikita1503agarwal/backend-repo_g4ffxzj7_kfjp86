@@ -19,6 +19,9 @@ class Room(BaseModel):
     capacity: int = Field(..., ge=1, le=100, description="Max occupants")
     gender: Literal["male", "female", "mixed"] = Field("mixed", description="Allowed gender")
     type: Literal["dorm", "double", "private"] = Field("dorm", description="Room type")
+    cooling: Literal["ventilated", "air_conditioned"] = Field(
+        "ventilated", description="Room cooling type: ventilated fan room or air conditioned"
+    )
     amenities: List[str] = Field(default_factory=list, description="Amenities like bathroom, AC, etc.")
 
 class Participant(BaseModel):
